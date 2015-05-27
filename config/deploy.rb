@@ -50,6 +50,8 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     in_directory "#{deploy_to}/public" do
+      queue %[[ ! -a #{deploy_to}/public/wp-content ] || rm #{deploy_to}/public/wp-content]
+      queue %[ln -s #{deploy_to}/current #{deploy_to}/public/wp-content]
       queue %[echo "----> Update permalink structure"]
       queue %[wp rewrite structure "/%year%/%monthnum%/%day%/%postname%/"]
     end
