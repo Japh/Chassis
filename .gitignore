@@ -9,3 +9,4 @@
 .DS_Store
 .idea
 config.local.yaml
+/config/mina-local.rb
