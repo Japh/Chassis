@@ -119,6 +119,12 @@ task :pull_uploads do
     puts `rsync -r #{user}@#{domain}:#{deploy_to}/#{shared_path}/uploads/ ./content/uploads/`
 end
 
+desc "Push uploads from development."
+task :push_uploads do
+    puts `echo "----> Uploading uploads from development"`
+    puts `rsync -r ./content/uploads/ #{user}@#{domain}:#{deploy_to}/#{shared_path}/uploads/`
+end
+
 desc "Export development database"
 task :export_db do
     puts `echo "----> Search and replacing #{dev} with #{hostname}"`
