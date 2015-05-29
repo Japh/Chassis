@@ -1,5 +1,5 @@
 require 'mina/git'
-require './config/mina-local.rb'
+require File.dirname(__FILE__) + '/mina-local.rb'
 
 non_destructive = ENV['soft']
 
