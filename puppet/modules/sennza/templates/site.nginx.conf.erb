@@ -4,6 +4,8 @@ server {
 	root <%= @location %>;
 	client_max_body_size 50M;
 
+	include /etc/nginx/sites-available/<%= @fqdn %>.d/*;
+
 	location / {
 		index index.php index.html index.htm;
 		try_files $uri $uri/ /index.php$is_args$args;
@@ -17,5 +19,9 @@ server {
 		fastcgi_index index.php;
 		fastcgi_read_timeout 900;
 		include /etc/nginx/fastcgi_params;
+	}
+
+	location ~* \.(js|css|png|jpe?g|gif|ico)$ {
+		log_not_found off;
 	}
 }

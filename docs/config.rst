@@ -47,7 +47,7 @@ To switch to 5.3 for example:
 
 You can use either a two-part version (``5.3``) or a three-part version
 (``5.3.1``) if you want to pick specifc versions. We support any version between
-5.3.0 and 5.5.x.
+5.3.0 and 5.6.x.
 
 
 WordPress Directory
@@ -60,8 +60,8 @@ we also allow swapping this out completely for users who want the flexibility.
 Our built-in version follows the pattern laid out by `WordPress Skeleton`_,
 however you can change this easily if you want.
 
-For example, to swap out the current version (4.0.1) for the latest development
-version:
+For example, to swap out the `current version of WordPress`_ for the latest
+development version:
 
 1. Clone ``https://github.com/WordPress/WordPress.git`` to ``wp-trunk/``
 2. Add ``wpdir: wp-trunk`` to your ``config.local.yaml``
@@ -71,6 +71,7 @@ We want to make this as flexible as possible, without forcing you to run through
 any of these steps if you don't need to.
 
 .. _WordPress Skeleton: https://github.com/markjaquith/WordPress-Skeleton
+.. _current version of WordPress: https://wordpress.org/download/
 
 
 Multisite
@@ -205,3 +206,20 @@ instead, such as:
 .. code-block:: yaml
 
    apt_mirror: http://mirror.optus.net/ubuntu/
+
+
+Synced Folders
+--------------
+
+**Key**: ``synced_folders``
+
+You may want to keep your themes and projects along-side Chassis, instead of
+inside it. You'll need to tell Chassis about these external directories, as it
+won't know how to map them. You can tell Chassis to map some external directories
+into the generated VM like so:
+
+.. code-block:: yaml
+
+   synced_folders:
+     a/host/directory: a/vm/directory
+     "this:ones:got:colons": another/vm/directory
